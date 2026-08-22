@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=Karla:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FBF6EE; }
+  a { color: #0785C1; text-decoration: none; }
+  a:hover { color: #065F8B; text-decoration: underline; }
+  input, textarea, select, button { font: inherit; }
+  ::placeholder { color: #9AA0A6; }
+</style>
+</helmet>
+
+<div style="background:#FBF6EE; color:#25303B; font-family:'Karla',sans-serif; min-height:100vh;">
+
+  <header style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding:18px 36px; background:#FFFFFF; border-bottom:2px solid #16365E; flex-wrap:wrap;">
+    <div onClick="{{ goHome }}" style="width:210px; height:84px; overflow:hidden; cursor:pointer; flex:none;"><img src="uploads/8CBD5356-FF59-44CD-833B-A4779E469937.PNG" alt="Great Lakes Exterior Cleaning" style="width:210px; display:block; margin-top:-46px;"/></div>
+    <nav style="display:flex; gap:24px; font-size:13.5px; font-weight:600;">
+      <span onClick="{{ goHome }}" style="cursor:pointer; color:#0785C1;" style-hover="color:#065F8B;">Home</span>
+      <span onClick="{{ goGallery }}" style="cursor:pointer; color:#0785C1;" style-hover="color:#065F8B;">Before/After</span>
+      <span onClick="{{ goContact }}" style="cursor:pointer; color:#0785C1;" style-hover="color:#065F8B;">Contact</span>
+      <span onClick="{{ goSystem }}" style="cursor:pointer; color:#8A8F86;" style-hover="color:#4A5158;">Design system</span>
+    </nav>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <a href="tel:+17162180749" style="font-size:14.5px; font-weight:700; color:#16365E; text-decoration:none;">(716) 218-0749</a>
+      <span onClick="{{ goContact }}" style="background:#4F9B2E; color:#FFFFFF; padding:10px 20px; border-radius:2px; font-size:13.5px; font-weight:700; cursor:pointer;" style-hover="background:#3F7F24;">Get a Quote</span>
+    </div>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <section style="padding:56px 36px; display:grid; grid-template-columns:1.05fr 1fr; gap:40px; align-items:center; border-bottom:1px solid #E2E5DE;">
+        <div>
+          <div style="font-size:12px; font-weight:700; color:#4F9B2E; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px;">Buffalo &amp; Western New York</div>
+          <h1 style="font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-0.015em; font-size:36px; line-height:1.25; margin:0 0 16px; color:#16365E;">The window cleaning crew that treats your house like their own.</h1>
+          <p style="font-size:15px; line-height:1.65; color:#4A5158; margin:0 0 20px; max-width:440px;">Interior and exterior glass, screens, sills and tracks — done right down to the corners. Quote within 24 hours.</p>
+          <p style="font-size:14px; line-height:1.6; color:#16365E; font-weight:600; margin:0 0 24px;">15% off your first clean · Free quotes · Satisfaction guarantee</p>
+          <div style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+            <span onClick="{{ goContact }}" style="background:#4F9B2E; color:#FFFFFF; padding:13px 24px; border-radius:2px; font-size:14.5px; font-weight:700; cursor:pointer;" style-hover="background:#3F7F24;">Request a Free Quote</span>
+            <a href="tel:+17162180749" style="font-size:14.5px; color:#16365E; font-weight:700; text-decoration:none;">(716) 218-0749</a>
+          </div>
+        </div>
+        <img src="uploads/62727C83-80C1-42BD-A4C4-D71564DBD30D.jpeg" alt="Cleaned windows and front porch of a Western New York home" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid #E2E5DE;">
+      </section>
+
+      <div style="padding:14px 36px; text-align:center; font-size:14px; color:#3F7F24; background:#EEF1EC; border-bottom:1px solid #E2E5DE;">Serving Buffalo, Cheektowaga, Amherst, West Seneca, Hamburg and Springville</div>
+
+      <section style="padding:56px 36px; border-bottom:1px solid #E2E5DE;">
+        <h2 style="font-family:'Manrope',sans-serif; font-weight:700; font-size:22px; margin:0 0 24px; color:#16365E;">Services</h2>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#E2E5DE; border:1px solid #E2E5DE;">
+          <div style="padding:22px; background:#FFFFFF;"><div style="font-family:'Manrope',sans-serif; font-weight:700; margin-bottom:8px; color:#16365E; font-size:15px;">Residential Windows</div><div style="font-size:13px; color:#4A5158; line-height:1.55;">Inside and out, streak-free, every pane.</div></div>
+          <div style="padding:22px; background:#FFFFFF;"><div style="font-family:'Manrope',sans-serif; font-weight:700; margin-bottom:8px; color:#16365E; font-size:15px;">Screens &amp; Tracks</div><div style="font-size:13px; color:#4A5158; line-height:1.55;">Screens washed, sills and tracks cleared by hand.</div></div>
+          <div style="padding:22px; background:#FFFFFF;"><div style="font-family:'Manrope',sans-serif; font-weight:700; margin-bottom:8px; color:#16365E; font-size:15px;">Hard Water Removal</div><div style="font-size:13px; color:#4A5158; line-height:1.55;">Mineral staining and overspray taken off the glass.</div></div>
+          <div style="padding:22px; background:#FFFFFF;"><div style="font-family:'Manrope',sans-serif; font-weight:700; margin-bottom:8px; color:#16365E; font-size:15px;">Storefront Glass</div><div style="font-size:13px; color:#4A5158; line-height:1.55;">Weekly or monthly routes for local businesses.</div></div>
+        </div>
+      </section>
+
+      <section style="padding:56px 36px; background:#FFFFFF; border-bottom:1px solid #E2E5DE;">
+        <h2 style="font-family:'Manrope',sans-serif; font-weight:700; font-size:22px; margin:0 0 6px; color:#16365E;">See the difference</h2>
+        <p style="font-size:13.5px; color:#4A5158; margin:0 0 28px;">Corners, sills, and tracks — not just the middle of the glass.</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+          <div><img src="uploads/IMG_2681-a6109ba0.jpeg" alt="Before — wide picture window" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid #E2E5DE;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86; margin-top:10px;">Before</div></div>
+          <div><img src="uploads/IMG_2735.jpeg" alt="After — wide picture window" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid #E2E5DE;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#16365E; margin-top:10px;">After</div></div>
+        </div>
+        <div style="margin-top:24px;"><span onClick="{{ goGallery }}" style="font-size:13.5px; font-weight:700; color:#0785C1; cursor:pointer;" style-hover="color:#065F8B;">See all before &amp; afters →</span></div>
+      </section>
+
+      <section style="padding:56px 36px; display:grid; grid-template-columns:1fr 1.4fr; gap:36px; border-bottom:1px solid #E2E5DE; align-items:center;">
+        <img src="uploads/IMG_0835.PNG" alt="Logan Mucha, owner and operator" style="width:100%; aspect-ratio:1/1; object-fit:cover; object-position:center top; display:block; border:1px solid #E2E5DE;">
+        <div>
+          <h2 style="font-family:'Manrope',sans-serif; font-weight:700; font-size:20px; margin:0 0 10px; color:#16365E;">Run by Logan Mucha</h2>
+          <p style="font-size:14.5px; line-height:1.65; color:#4A5158; margin:0;">Owner/operator, Buffalo, NY. Every job gets walked start to finish.</p>
+        </div>
+      </section>
+
+      <section style="padding:56px 36px; background:#FFFFFF; border-bottom:1px solid #E2E5DE;">
+        <h2 style="font-family:'Manrope',sans-serif; font-weight:700; font-size:22px; margin:0 0 24px; color:#16365E;">What neighbors say</h2>
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:#E2E5DE; border:1px solid #E2E5DE;">
+          <div style="padding:22px; background:#FFFFFF;"><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:15px; line-height:1.6; color:#25303B; margin-bottom:12px;">"I love how he got all the cobwebs even though he was just cleaning the windows"</div><div style="font-size:12.5px; color:#4F9B2E; font-weight:700;">Kenny Pirowski</div></div>
+          <div style="padding:22px; background:#FFFFFF;"><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:15px; line-height:1.6; color:#25303B; margin-bottom:12px;">"I like how you paid attention to my garden bed and took your time"</div><div style="font-size:12.5px; color:#4F9B2E; font-weight:700;">Annie Pirowski</div></div>
+        </div>
+      </section>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isGallery }}">
+    <div>
+      <section style="padding:56px 36px 28px;">
+        <h1 style="font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-0.015em; font-size:32px; margin:0 0 10px; color:#16365E;">Before &amp; after</h1>
+        <p style="font-size:14.5px; line-height:1.65; color:#4A5158; margin:0; max-width:520px;">Every pair is the same window, same day. Corners, sills and tracks included.</p>
+      </section>
+      <section style="padding:0 36px 56px; background:#FFFFFF; border-top:1px solid #E2E5DE; border-bottom:1px solid #E2E5DE; padding-top:36px;">
+        <div style="display:grid; gap:28px;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+            <div><img src="uploads/IMG_2681-a6109ba0.jpeg" alt="Before — wide picture window" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid #E2E5DE;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86; margin-top:10px;">Before</div></div>
+            <div><img src="uploads/IMG_2735.jpeg" alt="After — wide picture window" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid #E2E5DE;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#16365E; margin-top:10px;">After</div></div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+            <div><img src="uploads/great_lakes_window_cleaning_photos_jpegs/great_lakes_window_cleaning_6.jpg" alt="Before — sidelight glass beside the front door" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block; border:1px solid #E2E5DE;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86; margin-top:10px;">Before</div></div>
+            <div><img src="uploads/great_lakes_window_cleaning_photos_jpegs/great_lakes_window_cleaning_1.jpg" alt="After — sidelight glass beside the front door" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block; border:1px solid #E2E5DE;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#16365E; margin-top:10px;">After</div></div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+            <div><img src="uploads/IMG_2741.jpeg" alt="Before — double-hung window and sill" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block; border:1px solid #E2E5DE;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86; margin-top:10px;">Before</div></div>
+            <div><img src="uploads/IMG_2742-99f19d09.jpeg" alt="After — double-hung window and sill" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block; border:1px solid #E2E5DE;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#16365E; margin-top:10px;">After</div></div>
+          </div>
+        </div>
+      </section>
+      <section style="padding:44px 36px; display:flex; gap:20px; align-items:center; flex-wrap:wrap; border-bottom:1px solid #E2E5DE;">
+        <div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:18px; color:#16365E;">Want yours to look like this?</div>
+        <span onClick="{{ goContact }}" style="background:#4F9B2E; color:#FFFFFF; padding:13px 24px; border-radius:2px; font-size:14.5px; font-weight:700; cursor:pointer;" style-hover="background:#3F7F24;">Request a Free Quote</span>
+      </section>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}">
+    <div>
+      <section style="padding:56px 36px; display:grid; grid-template-columns:1fr 1.1fr; gap:44px; border-bottom:1px solid #E2E5DE; align-items:start;">
+        <div>
+          <h1 style="font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-0.015em; font-size:32px; margin:0 0 12px; color:#16365E;">Request a free quote</h1>
+          <p style="font-size:14.5px; line-height:1.65; color:#4A5158; margin:0 0 28px; max-width:400px;">Tell me a bit about the house and I'll get back to you within 24 hours. 15% off your first clean.</p>
+          <div style="display:grid; gap:20px; border-top:1px solid #E2E5DE; padding-top:24px;">
+            <div>
+              <div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86; margin-bottom:6px;">Phone</div>
+              <a href="tel:+17162180749" style="font-family:'Manrope',sans-serif; font-weight:700; font-size:18px; color:#16365E; text-decoration:none;">(716) 218-0749</a>
+            </div>
+            <div>
+              <div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86; margin-bottom:6px;">Email</div>
+              <a href="mailto:contact@greatlakesexteriorcleaning.com" style="font-size:14.5px; font-weight:600;">contact@greatlakesexteriorcleaning.com</a>
+            </div>
+            <div>
+              <div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86; margin-bottom:6px;">Hours</div>
+              <div style="font-size:14.5px; color:#25303B;">Monday–Sunday, 8am–5pm</div>
+            </div>
+            <div>
+              <div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86; margin-bottom:6px;">Service area</div>
+              <div style="font-size:14.5px; color:#25303B; line-height:1.6;">Buffalo, Cheektowaga, Amherst, West Seneca, Hamburg, Springville</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#FFFFFF; border:1px solid #E2E5DE; padding:28px;">
+          <sc-if value="{{ submitted }}">
+            <div>
+              <div style="font-family:'Manrope',sans-serif; font-weight:800; font-size:20px; color:#16365E; margin-bottom:10px;">Thanks — request received.</div>
+              <p style="font-size:14.5px; line-height:1.65; color:#4A5158; margin:0 0 20px;">I'll be in touch within 24 hours at the number or email you left. If it's urgent, call (716) 218-0749.</p>
+              <span onClick="{{ resetForm }}" style="font-size:13.5px; font-weight:700; color:#0785C1; cursor:pointer;" style-hover="color:#065F8B;">Send another request</span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+            <div style="display:grid; gap:18px;">
+              <div style="display:grid; gap:6px;">
+                <label for="q-name" style="font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#4A5158;">Name</label>
+                <input id="q-name" type="text" value="{{ name }}" onChange="{{ onName }}" placeholder="Your name" style="border:1px solid #C9CFC6; border-radius:2px; padding:11px 12px; font-size:14.5px; color:#25303B; background:#FBF6EE; outline:none;" style-focus="border-color:#0785C1; background:#FFFFFF;">
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+                <div style="display:grid; gap:6px;">
+                  <label for="q-phone" style="font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#4A5158;">Phone</label>
+                  <input id="q-phone" type="tel" value="{{ phone }}" onChange="{{ onPhone }}" placeholder="(716) 000-0000" style="border:1px solid #C9CFC6; border-radius:2px; padding:11px 12px; font-size:14.5px; color:#25303B; background:#FBF6EE; outline:none;" style-focus="border-color:#0785C1; background:#FFFFFF;">
+                </div>
+                <div style="display:grid; gap:6px;">
+                  <label for="q-email" style="font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#4A5158;">Email</label>
+                  <input id="q-email" type="email" value="{{ email }}" onChange="{{ onEmail }}" placeholder="you@email.com" style="border:1px solid #C9CFC6; border-radius:2px; padding:11px 12px; font-size:14.5px; color:#25303B; background:#FBF6EE; outline:none;" style-focus="border-color:#0785C1; background:#FFFFFF;">
+                </div>
+              </div>
+              <div style="display:grid; gap:6px;">
+                <label for="q-town" style="font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#4A5158;">Town</label>
+                <select id="q-town" value="{{ town }}" onChange="{{ onTown }}" style="border:1px solid #C9CFC6; border-radius:2px; padding:11px 12px; font-size:14.5px; color:#25303B; background:#FBF6EE; outline:none;" style-focus="border-color:#0785C1; background:#FFFFFF;">
+                  <option value="Buffalo">Buffalo</option>
+                  <option value="Cheektowaga">Cheektowaga</option>
+                  <option value="Amherst">Amherst</option>
+                  <option value="West Seneca">West Seneca</option>
+                  <option value="Hamburg">Hamburg</option>
+                  <option value="Springville">Springville</option>
+                  <option value="Other">Somewhere else nearby</option>
+                </select>
+              </div>
+              <div style="display:grid; gap:6px;">
+                <label for="q-notes" style="font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#4A5158;">What needs cleaning?</label>
+                <textarea id="q-notes" rows="4" value="{{ notes }}" onChange="{{ onNotes }}" placeholder="Roughly how many windows, one or two storeys, inside and out or exterior only" style="border:1px solid #C9CFC6; border-radius:2px; padding:11px 12px; font-size:14.5px; color:#25303B; background:#FBF6EE; outline:none; resize:vertical; font-family:'Karla',sans-serif;" style-focus="border-color:#0785C1; background:#FFFFFF;"></textarea>
+              </div>
+              <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+                <span onClick="{{ submit }}" style="background:#4F9B2E; color:#FFFFFF; padding:13px 26px; border-radius:2px; font-size:14.5px; font-weight:700; cursor:pointer;" style-hover="background:#3F7F24;">Send request</span>
+                <span style="font-size:12.5px; color:#4A5158;">Free quote · No obligation</span>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </section>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isSystem }}">
+    <div>
+      <section style="padding:56px 36px 36px;">
+        <h1 style="font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-0.015em; font-size:32px; margin:0 0 10px; color:#16365E;">Design system</h1>
+        <p style="font-size:14.5px; line-height:1.65; color:#4A5158; margin:0; max-width:560px;">Ledger — refined palette. Bold Manrope headings, Karla body, hairline rules instead of shadows, 2px corners.</p>
+      </section>
+
+      <section style="padding:36px; background:#FFFFFF; border-top:1px solid #E2E5DE; border-bottom:1px solid #E2E5DE;">
+        <h2 style="font-family:'Manrope',sans-serif; font-weight:700; font-size:18px; margin:0 0 20px; color:#16365E;">Palette</h2>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#E2E5DE; border:1px solid #E2E5DE;">
+          <div style="background:#FFFFFF; padding:0;"><div style="height:72px; background:#FBF6EE;"></div><div style="padding:14px;"><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:13.5px; color:#16365E;">Warm white</div><div style="font-size:12.5px; color:#4A5158;">#FBF6EE · page background</div></div></div>
+          <div style="background:#FFFFFF;"><div style="height:72px; background:#16365E;"></div><div style="padding:14px;"><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:13.5px; color:#16365E;">Navy</div><div style="font-size:12.5px; color:#4A5158;">#16365E · headings, footer</div></div></div>
+          <div style="background:#FFFFFF;"><div style="height:72px; background:#0785C1;"></div><div style="padding:14px;"><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:13.5px; color:#16365E;">Lake blue</div><div style="font-size:12.5px; color:#4A5158;">#0785C1 · links, nav</div></div></div>
+          <div style="background:#FFFFFF;"><div style="height:72px; background:#4F9B2E;"></div><div style="padding:14px;"><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:13.5px; color:#16365E;">Green</div><div style="font-size:12.5px; color:#4A5158;">#4F9B2E · CTAs, accents</div></div></div>
+          <div style="background:#FFFFFF;"><div style="height:72px; background:#FFFFFF; border-bottom:1px solid #E2E5DE;"></div><div style="padding:14px;"><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:13.5px; color:#16365E;">White</div><div style="font-size:12.5px; color:#4A5158;">#FFFFFF · cards, forms</div></div></div>
+          <div style="background:#FFFFFF;"><div style="height:72px; background:#E2E5DE;"></div><div style="padding:14px;"><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:13.5px; color:#16365E;">Rule</div><div style="font-size:12.5px; color:#4A5158;">#E2E5DE · borders, dividers</div></div></div>
+          <div style="background:#FFFFFF;"><div style="height:72px; background:#25303B;"></div><div style="padding:14px;"><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:13.5px; color:#16365E;">Ink</div><div style="font-size:12.5px; color:#4A5158;">#25303B · body text</div></div></div>
+          <div style="background:#FFFFFF;"><div style="height:72px; background:#4A5158;"></div><div style="padding:14px;"><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:13.5px; color:#16365E;">Ink muted</div><div style="font-size:12.5px; color:#4A5158;">#4A5158 · secondary text</div></div></div>
+        </div>
+      </section>
+
+      <section style="padding:36px; border-bottom:1px solid #E2E5DE;">
+        <h2 style="font-family:'Manrope',sans-serif; font-weight:700; font-size:18px; margin:0 0 20px; color:#16365E;">Type scale</h2>
+        <div style="display:grid; gap:18px;">
+          <div style="display:grid; grid-template-columns:120px 1fr; gap:20px; align-items:baseline; border-bottom:1px solid #E2E5DE; padding-bottom:14px;"><div style="font-size:12px; color:#8A8F86;">Display · 36/1.25</div><div style="font-family:'Manrope',sans-serif; font-weight:800; font-size:36px; line-height:1.25; letter-spacing:-0.015em; color:#16365E;">Page headline</div></div>
+          <div style="display:grid; grid-template-columns:120px 1fr; gap:20px; align-items:baseline; border-bottom:1px solid #E2E5DE; padding-bottom:14px;"><div style="font-size:12px; color:#8A8F86;">H2 · 22/1.3</div><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:22px; color:#16365E;">Section heading</div></div>
+          <div style="display:grid; grid-template-columns:120px 1fr; gap:20px; align-items:baseline; border-bottom:1px solid #E2E5DE; padding-bottom:14px;"><div style="font-size:12px; color:#8A8F86;">H3 · 18/1.4</div><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:18px; color:#16365E;">Sub heading</div></div>
+          <div style="display:grid; grid-template-columns:120px 1fr; gap:20px; align-items:baseline; border-bottom:1px solid #E2E5DE; padding-bottom:14px;"><div style="font-size:12px; color:#8A8F86;">Card title · 15/1.4</div><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:15px; color:#16365E;">Residential Windows</div></div>
+          <div style="display:grid; grid-template-columns:120px 1fr; gap:20px; align-items:baseline; border-bottom:1px solid #E2E5DE; padding-bottom:14px;"><div style="font-size:12px; color:#8A8F86;">Body · 14.5/1.65</div><div style="font-size:14.5px; line-height:1.65; color:#25303B; max-width:520px;">Interior and exterior glass, screens, sills and tracks — done right down to the corners.</div></div>
+          <div style="display:grid; grid-template-columns:120px 1fr; gap:20px; align-items:baseline; border-bottom:1px solid #E2E5DE; padding-bottom:14px;"><div style="font-size:12px; color:#8A8F86;">Small · 13/1.55</div><div style="font-size:13px; line-height:1.55; color:#4A5158;">Card body and supporting copy.</div></div>
+          <div style="display:grid; grid-template-columns:120px 1fr; gap:20px; align-items:baseline;"><div style="font-size:12px; color:#8A8F86;">Label · 11.5 caps</div><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Before</div></div>
+        </div>
+      </section>
+
+      <section style="padding:36px; background:#FFFFFF; border-bottom:1px solid #E2E5DE;">
+        <h2 style="font-family:'Manrope',sans-serif; font-weight:700; font-size:18px; margin:0 0 20px; color:#16365E;">Spacing scale</h2>
+        <div style="display:grid; gap:10px;">
+          <div style="display:flex; align-items:center; gap:16px;"><div style="width:60px; font-size:12px; color:#8A8F86;">4</div><div style="height:12px; width:4px; background:#0785C1;"></div></div>
+          <div style="display:flex; align-items:center; gap:16px;"><div style="width:60px; font-size:12px; color:#8A8F86;">8</div><div style="height:12px; width:8px; background:#0785C1;"></div></div>
+          <div style="display:flex; align-items:center; gap:16px;"><div style="width:60px; font-size:12px; color:#8A8F86;">12</div><div style="height:12px; width:12px; background:#0785C1;"></div></div>
+          <div style="display:flex; align-items:center; gap:16px;"><div style="width:60px; font-size:12px; color:#8A8F86;">20</div><div style="height:12px; width:20px; background:#0785C1;"></div></div>
+          <div style="display:flex; align-items:center; gap:16px;"><div style="width:60px; font-size:12px; color:#8A8F86;">28</div><div style="height:12px; width:28px; background:#0785C1;"></div></div>
+          <div style="display:flex; align-items:center; gap:16px;"><div style="width:60px; font-size:12px; color:#8A8F86;">36 · section padding</div><div style="height:12px; width:36px; background:#0785C1;"></div></div>
+          <div style="display:flex; align-items:center; gap:16px;"><div style="width:60px; font-size:12px; color:#8A8F86;">56 · section rhythm</div><div style="height:12px; width:56px; background:#16365E;"></div></div>
+        </div>
+      </section>
+
+      <section style="padding:36px; border-bottom:1px solid #E2E5DE;">
+        <h2 style="font-family:'Manrope',sans-serif; font-weight:700; font-size:18px; margin:0 0 20px; color:#16365E;">Buttons</h2>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; max-width:820px;">
+          <div style="display:grid; gap:10px; justify-items:start;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Primary</div><span style="background:#4F9B2E; color:#FFFFFF; padding:13px 24px; border-radius:2px; font-size:14.5px; font-weight:700; cursor:pointer;" style-hover="background:#3F7F24;">Get a Quote</span></div>
+          <div style="display:grid; gap:10px; justify-items:start;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Hover</div><span style="background:#3F7F24; color:#FFFFFF; padding:13px 24px; border-radius:2px; font-size:14.5px; font-weight:700;">Get a Quote</span></div>
+          <div style="display:grid; gap:10px; justify-items:start;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Active</div><span style="background:#356A1F; color:#FFFFFF; padding:13px 24px; border-radius:2px; font-size:14.5px; font-weight:700;">Get a Quote</span></div>
+          <div style="display:grid; gap:10px; justify-items:start;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Disabled</div><span style="background:#CBD3C6; color:#FFFFFF; padding:13px 24px; border-radius:2px; font-size:14.5px; font-weight:700; cursor:not-allowed;">Get a Quote</span></div>
+          <div style="display:grid; gap:10px; justify-items:start;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Secondary</div><span style="background:#FFFFFF; color:#16365E; border:1px solid #16365E; padding:12px 23px; border-radius:2px; font-size:14.5px; font-weight:700; cursor:pointer;" style-hover="background:#16365E; color:#FFFFFF;">Call us</span></div>
+          <div style="display:grid; gap:10px; justify-items:start;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Secondary hover</div><span style="background:#16365E; color:#FFFFFF; border:1px solid #16365E; padding:12px 23px; border-radius:2px; font-size:14.5px; font-weight:700;">Call us</span></div>
+          <div style="display:grid; gap:10px; justify-items:start;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Text link</div><span style="font-size:14.5px; font-weight:700; color:#0785C1; cursor:pointer;" style-hover="color:#065F8B;">See all before &amp; afters →</span></div>
+          <div style="display:grid; gap:10px; justify-items:start;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Link hover</div><span style="font-size:14.5px; font-weight:700; color:#065F8B; text-decoration:underline;">See all before &amp; afters →</span></div>
+        </div>
+      </section>
+
+      <section style="padding:36px; background:#FFFFFF; border-bottom:1px solid #E2E5DE;">
+        <h2 style="font-family:'Manrope',sans-serif; font-weight:700; font-size:18px; margin:0 0 20px; color:#16365E;">Form fields</h2>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; max-width:900px;">
+          <div style="display:grid; gap:6px;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Default</div><input type="text" placeholder="Your name" style="border:1px solid #C9CFC6; border-radius:2px; padding:11px 12px; font-size:14.5px; background:#FBF6EE; outline:none;"></div>
+          <div style="display:grid; gap:6px;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Focus</div><input type="text" placeholder="Your name" style="border:1px solid #0785C1; border-radius:2px; padding:11px 12px; font-size:14.5px; background:#FFFFFF; outline:none;"></div>
+          <div style="display:grid; gap:6px;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Filled</div><input type="text" value="Logan Mucha" style="border:1px solid #C9CFC6; border-radius:2px; padding:11px 12px; font-size:14.5px; background:#FFFFFF; color:#25303B; outline:none;"></div>
+          <div style="display:grid; gap:6px;"><div style="font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:#8A8F86;">Error</div><input type="text" placeholder="(716) 000-0000" style="border:1px solid #B3341F; border-radius:2px; padding:11px 12px; font-size:14.5px; background:#FFFFFF; outline:none;"><div style="font-size:12px; color:#B3341F;">Add a phone or email so I can reply.</div></div>
+        </div>
+      </section>
+
+      <section style="padding:36px; border-bottom:1px solid #E2E5DE;">
+        <h2 style="font-family:'Manrope',sans-serif; font-weight:700; font-size:18px; margin:0 0 20px; color:#16365E;">Cards &amp; rules</h2>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:820px;">
+          <div style="background:#FFFFFF; border:1px solid #E2E5DE; padding:22px;"><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:15px; color:#16365E; margin-bottom:8px;">Service card</div><div style="font-size:13px; color:#4A5158; line-height:1.55;">White on warm white, hairline border, no shadow, 2px corners.</div></div>
+          <div style="background:#FFFFFF; border:1px solid #E2E5DE; padding:22px;"><div style="font-family:'Manrope',sans-serif; font-weight:700; font-size:15px; line-height:1.6; color:#25303B; margin-bottom:12px;">"Quote card — the review sits in Manrope at 15px."</div><div style="font-size:12.5px; color:#4F9B2E; font-weight:700;">Customer name</div></div>
+          <div style="background:#EEF1EC; border:1px solid #E2E5DE; padding:22px; display:flex; align-items:center; justify-content:center; text-align:center; font-size:13.5px; color:#3F7F24;">Trust bar — green tint on warm white</div>
+        </div>
+      </section>
+    </div>
+  </sc-if>
+
+  <div style="padding:16px 36px; text-align:center; font-size:13.5px; color:#3F7F24; background:#EEF1EC; border-bottom:1px solid #E2E5DE;">$1,000,000 general liability coverage through Utica First &nbsp;·&nbsp; Fully insured in New York State &nbsp;·&nbsp; Satisfaction guarantee</div>
+
+  <footer style="padding:36px; background:#16365E; color:#C2D0E0; display:grid; grid-template-columns:repeat(3,1fr); gap:28px; font-size:13px; line-height:1.6;">
+    <div>
+      <div style="background:#FFFFFF; width:180px; height:72px; overflow:hidden; margin-bottom:14px;"><img src="uploads/8CBD5356-FF59-44CD-833B-A4779E469937.PNG" alt="Great Lakes Exterior Cleaning" style="width:180px; display:block; margin-top:-40px;"/></div>
+      <a href="tel:+17162180749" style="color:#FFFFFF; font-weight:600; text-decoration:none;">(716) 218-0749</a><br>
+      <a href="mailto:contact@greatlakesexteriorcleaning.com" style="color:#C2D0E0;">contact@greatlakesexteriorcleaning.com</a>
+    </div>
+    <div>
+      <div style="font-family:'Manrope',sans-serif; font-weight:700; color:#FFFFFF; margin-bottom:8px;">Service area</div>
+      Buffalo, Cheektowaga, Amherst,<br>West Seneca, Hamburg, Springville<br>
+      Monday–Sunday, 8am–5pm
+    </div>
+    <div>
+      <div style="font-family:'Manrope',sans-serif; font-weight:700; color:#FFFFFF; margin-bottom:8px;">Insurance</div>
+      Logan Mucha dba Great Lakes Exterior Cleaning<br>
+      Insured through Utica First — $1M / $2M aggregate
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { page: 'home', submitted: false, name: '', phone: '', email: '', town: 'Buffalo', notes: '' };
+  go(page) { this.setState({ page: page }); if (typeof window !== 'undefined') window.scrollTo(0, 0); }
+  renderVals() {
+    const p = this.state.page;
+    return {
+      isHome: p === 'home', isGallery: p === 'gallery', isContact: p === 'contact', isSystem: p === 'system',
+      goHome: () => this.go('home'),
+      goGallery: () => this.go('gallery'),
+      goContact: () => this.go('contact'),
+      goSystem: () => this.go('system'),
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      name: this.state.name, phone: this.state.phone, email: this.state.email, town: this.state.town, notes: this.state.notes,
+      onName: (e) => this.setState({ name: e.target.value }),
+      onPhone: (e) => this.setState({ phone: e.target.value }),
+      onEmail: (e) => this.setState({ email: e.target.value }),
+      onTown: (e) => this.setState({ town: e.target.value }),
+      onNotes: (e) => this.setState({ notes: e.target.value }),
+      submit: () => this.setState({ submitted: true }),
+      resetForm: () => this.setState({ submitted: false, name: '', phone: '', email: '', notes: '' })
+    };
+  }
+}
+</script>
+</body>
+</html>
