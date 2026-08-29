@@ -42,17 +42,13 @@ for reference.
    **Every original is still in git at commit `0279b75`** if a full-resolution copy or one
    of the unused shots is ever wanted — gallery shots 2-5 in particular were usable photos,
    just not placed on any page.
-6. **Gallery shots 2-5 restored and placed (Aug 29).** Shots 4 and 5 are a genuine
-   before/after of the full-length glass storm door — shot 4 shows water spots and
-   specks across the glass, shot 5 the same door clean — so they were added as a
-   fourth before/after pair.
-   Shots 2 and 3 are the **same slider window from two angles, both already clean**,
-   not a before/after: their exposures differ too much to compare (shot 3 reflects
-   bright sky), and shot 3 still has its insect screen in place. The page promises
-   "Every pair is the same window, same day," so they go in a separate **Finished work**
-   row instead of being labelled Before/After.
-   **[CHECK]** Logan took these — if he knows shots 2 and 3 actually are a before/after,
-   say which is which and they can move up into the pairs.
+6. **Gallery shots 2-5 restored and paired (Aug 29).** Owner confirmed the photos'
+   original number order is correct, so they are paired in sequence: 2 -> 3 and 4 -> 5,
+   lower number Before, higher number After. Before/After now shows five pairs.
+   The three original pairs were left exactly where they were, including 6 -> 1.
+   The interim "Finished work" section has been removed.
+   Shots 2 and 3 are shown at `aspect-ratio:4/3` (shot 3 is the only landscape file in
+   the set); shot 2 carries `object-position:center 25%` so the window stays in frame.
 
 Scope stays base website only — no login, admin, database or payments.
 
