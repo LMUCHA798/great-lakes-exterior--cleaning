@@ -27,13 +27,21 @@ for reference.
    on failure the visitor gets the phone number and a pre-filled email link.
 3. Social / Google Business links: none supplied yet.
 4. Optional: vector version of the logo for crisp scaling.
-5. **Resize the photos before launch.** The five main photos are unmodified 5712x4284
-   (24.5MP) camera files, 4-6 MB each, displayed in containers a few hundred pixels wide.
-   Home is ~19 MB of images and Before/After ~24 MB. Every file resolves and is committed,
-   so the site works — it just loads very slowly on phones. Resizing the long edge to
-   ~1600px at quality 80 cuts each to roughly 200-400 KB with no visible change at the
-   sizes used. `uploads/` also holds ~28 MB of unused duplicates
-   (`IMG_2681.jpeg`, `IMG_2742.jpeg`, `uploads/attachments/`, unused gallery shots).
+5. ~~Resize the photos~~ — **done.** The photos were unmodified 5712x4284 (24.5MP)
+   camera files. Resized to a 1600px long edge at quality 82, with EXIF rotation baked
+   into the pixels (`IMG_2741` and `IMG_2742` were orientation=6 — they render portrait,
+   which is why they use `aspect-ratio:3/4`). Home went from ~19 MB of images to 1.2 MB,
+   Before/After from ~24 MB to 1.8 MB, `uploads/` from 59 MB to 2.2 MB.
+   The logo was reduced to 640px and palette-quantized (1.1 MB -> 18 KB). The owner
+   portrait was a photo stored as PNG with a fully-opaque alpha channel, so it became
+   `uploads/IMG_0835.jpg` (1.2 MB -> 81 KB) and its one `src` was updated.
+   Unused files were removed: three byte-identical duplicates of photos already in use
+   (`IMG_2681.jpeg`, `IMG_2742.jpeg`, `attachments/IMG_2735.jpeg`) and eight distinct but
+   unreferenced images (`attachments/IMG_2681.jpeg`, `IMG_3361.png`,
+   `pasted-1786156088333-0.png`, `unnamed.jpg`, and gallery shots 2-5).
+   **Every original is still in git at commit `0279b75`** if a full-resolution copy or one
+   of the unused shots is ever wanted — gallery shots 2-5 in particular were usable photos,
+   just not placed on any page.
 
 Scope stays base website only — no login, admin, database or payments.
 
