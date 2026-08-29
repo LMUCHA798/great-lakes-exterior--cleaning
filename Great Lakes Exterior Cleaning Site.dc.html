@@ -156,6 +156,7 @@
           </sc-if>
           <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
             <div style="display:grid; gap:18px;">
+              <input id="q-company" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" value="{{ company }}" onChange="{{ onCompany }}" style="display:none;">
               <div style="display:grid; gap:6px;">
                 <label for="q-name" style="font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#4A5158;">Name</label>
                 <input id="q-name" type="text" value="{{ name }}" onChange="{{ onName }}" placeholder="Your name" style="border:1px solid #C9CFC6; border-radius:2px; padding:11px 12px; font-size:14.5px; color:#25303B; background:#FBF6EE; outline:none;" style-focus="border-color:#0785C1; background:#FFFFFF;">
@@ -186,8 +187,16 @@
                 <label for="q-notes" style="font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:#4A5158;">What needs cleaning?</label>
                 <textarea id="q-notes" rows="4" value="{{ notes }}" onChange="{{ onNotes }}" placeholder="Roughly how many windows, one or two storeys, inside and out or exterior only" style="border:1px solid #C9CFC6; border-radius:2px; padding:11px 12px; font-size:14.5px; color:#25303B; background:#FBF6EE; outline:none; resize:vertical; font-family:'Karla',sans-serif;" style-focus="border-color:#0785C1; background:#FFFFFF;"></textarea>
               </div>
+              <sc-if value="{{ hasError }}">
+                <div style="border:1px solid #C9CFC6; border-left:3px solid #B3261E; background:#FBF6EE; padding:12px 14px; font-size:13.5px; line-height:1.6; color:#25303B;">
+                  {{ errorText }}
+                  <sc-if value="{{ showFallback }}">
+                    <div style="margin-top:8px;"><a href="{{ mailtoHref }}" style="font-size:13.5px; font-weight:700;">Send it by email instead</a></div>
+                  </sc-if>
+                </div>
+              </sc-if>
               <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
-                <span onClick="{{ submit }}" style="background:#4F9B2E; color:#FFFFFF; padding:13px 26px; border-radius:2px; font-size:14.5px; font-weight:700; cursor:pointer;" style-hover="background:#3F7F24;">Send request</span>
+                <span onClick="{{ submit }}" style="background:#4F9B2E; color:#FFFFFF; padding:13px 26px; border-radius:2px; font-size:14.5px; font-weight:700; cursor:pointer;" style-hover="background:#3F7F24;">{{ sendLabel }}</span>
                 <span style="font-size:12.5px; color:#4A5158;">Free quote · No obligation</span>
               </div>
             </div>
@@ -303,26 +312,106 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900}}">
 class Component extends DCLogic {
-  state = { page: 'home', submitted: false, name: '', phone: '', email: '', town: 'Buffalo', notes: '' };
+  // Where quote requests are delivered. FormSubmit forwards this form straight to
+  // the inbox named in the URL — no server, no account, works on any static host.
+  // ACTIVATION: the first request sent from the live domain triggers a one-time
+  // confirmation email to the address below. Click the link in it once and every
+  // later request is forwarded automatically.
+  static QUOTE_ENDPOINT = 'https://formsubmit.co/ajax/contact@greatlakesexteriorcleaning.com';
+  static QUOTE_INBOX = 'contact@greatlakesexteriorcleaning.com';
+
+  // status: 'idle' | 'sending' | 'sent' | 'error'
+  state = { page: 'home', status: 'idle', error: '', failed: false, name: '', phone: '', email: '', town: 'Buffalo', notes: '', company: '' };
+
   go(page) { this.setState({ page: page }); if (typeof window !== 'undefined') window.scrollTo(0, 0); }
+
+  // Name, plus at least one way to reply. Anything less isn't a usable lead.
+  validate() {
+    const s = this.state;
+    if (!s.name.trim()) return 'Please add your name.';
+    if (!s.phone.trim() && !s.email.trim()) return 'Please add a phone number or an email so I can reach you.';
+    if (s.email.trim() && !/^[^@\s]+@[^@\s.]+\.[^@\s]+$/.test(s.email.trim())) return 'That email address looks incomplete.';
+    return '';
+  }
+
+  // Fallback if the send fails: hand the visitor a pre-filled email so the lead
+  // still gets through instead of being lost.
+  mailtoHref() {
+    const s = this.state;
+    const body = [
+      'Name: ' + s.name, 'Phone: ' + s.phone, 'Email: ' + s.email, 'Town: ' + s.town,
+      '', 'What needs cleaning:', s.notes
+    ].join('\n');
+    return 'mailto:' + Component.QUOTE_INBOX +
+      '?subject=' + encodeURIComponent('Quote request') +
+      '&body=' + encodeURIComponent(body);
+  }
+
+  async send() {
+    if (this.state.status === 'sending') return;
+    const s = this.state;
+    // Honeypot: only a bot fills a hidden field. Drop it, but show success.
+    if (s.company) { this.setState({ status: 'sent' }); return; }
+
+    const problem = this.validate();
+    if (problem) { this.setState({ status: 'error', error: problem, failed: false }); return; }
+
+    this.setState({ status: 'sending', error: '', failed: false });
+    const payload = {
+      Name: s.name.trim(),
+      Phone: s.phone.trim(),
+      Email: s.email.trim(),
+      Town: s.town,
+      'What needs cleaning': s.notes.trim(),
+      _subject: 'New quote request — ' + (s.name.trim() || 'website'),
+      _template: 'table',
+      _captcha: 'false'
+    };
+    if (s.email.trim()) payload._replyto = s.email.trim();
+
+    try {
+      const res = await fetch(Component.QUOTE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      this.setState({ status: 'sent', error: '', failed: false });
+    } catch (e) {
+      this.setState({
+        status: 'error',
+        failed: true,
+        error: "Your request didn't go through. Please call (716) 218-0749, or use the email link below — your details are already filled in."
+      });
+    }
+  }
+
   renderVals() {
     const p = this.state.page;
+    const st = this.state.status;
     return {
       isHome: p === 'home', isGallery: p === 'gallery', isContact: p === 'contact', isSystem: p === 'system',
       goHome: () => this.go('home'),
       goGallery: () => this.go('gallery'),
       goContact: () => this.go('contact'),
       goSystem: () => this.go('system'),
-      submitted: this.state.submitted,
-      notSubmitted: !this.state.submitted,
+      submitted: st === 'sent',
+      notSubmitted: st !== 'sent',
+      hasError: st === 'error',
+      showFallback: st === 'error' && this.state.failed,
+      errorText: this.state.error,
+      sendLabel: st === 'sending' ? 'Sending…' : 'Send request',
+      mailtoHref: this.mailtoHref(),
       name: this.state.name, phone: this.state.phone, email: this.state.email, town: this.state.town, notes: this.state.notes,
+      company: this.state.company,
       onName: (e) => this.setState({ name: e.target.value }),
       onPhone: (e) => this.setState({ phone: e.target.value }),
       onEmail: (e) => this.setState({ email: e.target.value }),
       onTown: (e) => this.setState({ town: e.target.value }),
       onNotes: (e) => this.setState({ notes: e.target.value }),
-      submit: () => this.setState({ submitted: true }),
-      resetForm: () => this.setState({ submitted: false, name: '', phone: '', email: '', notes: '' })
+      onCompany: (e) => this.setState({ company: e.target.value }),
+      submit: () => this.send(),
+      resetForm: () => this.setState({ status: 'idle', error: '', failed: false, name: '', phone: '', email: '', notes: '', company: '' })
     };
   }
 }

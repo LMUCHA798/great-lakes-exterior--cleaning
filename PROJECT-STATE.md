@@ -17,9 +17,23 @@ for reference.
 ### To finish on return
 1. Confirm the four services are the ones to sell (Residential Windows, Screens & Tracks,
    Hard Water Removal, Storefront Glass).
-2. Quote form has no backend — needs a form handler or mailto before going live.
+2. ~~Quote form has no backend~~ — **done.** The form POSTs to FormSubmit
+   (`https://formsubmit.co/ajax/contact@greatlakesexteriorcleaning.com`), which forwards
+   each request to that inbox. No server or account needed; works on any static host.
+   **One activation step:** the first request sent from the live domain triggers a
+   confirmation email to that address — click the link in it once and delivery is live.
+   The endpoint is a single constant (`QUOTE_ENDPOINT`) in the page's logic block if the
+   service ever needs swapping. Success is only shown when the send actually succeeds;
+   on failure the visitor gets the phone number and a pre-filled email link.
 3. Social / Google Business links: none supplied yet.
 4. Optional: vector version of the logo for crisp scaling.
+5. **Resize the photos before launch.** The five main photos are unmodified 5712x4284
+   (24.5MP) camera files, 4-6 MB each, displayed in containers a few hundred pixels wide.
+   Home is ~19 MB of images and Before/After ~24 MB. Every file resolves and is committed,
+   so the site works — it just loads very slowly on phones. Resizing the long edge to
+   ~1600px at quality 80 cuts each to roughly 200-400 KB with no visible change at the
+   sizes used. `uploads/` also holds ~28 MB of unused duplicates
+   (`IMG_2681.jpeg`, `IMG_2742.jpeg`, `uploads/attachments/`, unused gallery shots).
 
 Scope stays base website only — no login, admin, database or payments.
 
