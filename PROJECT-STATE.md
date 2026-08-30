@@ -54,6 +54,27 @@ for reference.
    Shots 2 and 3 are shown at `aspect-ratio:4/3` (shot 3 is the only landscape file in
    the set); shot 2 carries `object-position:center 25%` so the window stays in frame.
 
+## Deploying (GitHub Pages)
+
+`index.html` is what gets served at the root of the domain. It is a **generated copy** of
+`Great Lakes Exterior Cleaning Site.dc.html` — edit the `.dc.html`, never `index.html`,
+then regenerate:
+
+```sh
+./sync-index.sh
+```
+
+**If you skip that step the live site keeps serving the old version.** The generated file
+carries a comment on line 2 saying so.
+
+`.nojekyll` is present so GitHub Pages serves the files as-is instead of running Jekyll
+over them. All asset paths are relative, so the site works both at a domain root and at
+a project-page subpath like `/great-lakes-exterior--cleaning/`.
+
+Setup: repo Settings -> Pages -> Source "Deploy from a branch" -> pick the branch and the
+`/ (root)` folder. Custom domain for greatlakesexteriorcleaning.com is configured on the
+same screen, and needs DNS records pointed at GitHub.
+
 Scope stays base website only — no login, admin, database or payments.
 
 ## Confirmed business details (from owner's business card)
