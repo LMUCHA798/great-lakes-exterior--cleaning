@@ -18,10 +18,14 @@ for reference.
 1. Confirm the four services are the ones to sell (Residential Windows, Screens & Tracks,
    Hard Water Removal, Storefront Glass).
 2. ~~Quote form has no backend~~ — **done.** The form POSTs to FormSubmit
-   (`https://formsubmit.co/ajax/contact@greatlakesexteriorcleaning.com`), which forwards
-   each request to that inbox. No server or account needed; works on any static host.
+   (`https://formsubmit.co/ajax/loganmucha798@gmail.com`), which forwards each request to
+   the owner's Gmail — the domain mailbox is not confirmed working yet. No server or account needed; works on any static host.
    **One activation step:** the first request sent from the live domain triggers a
-   confirmation email to that address — click the link in it once and delivery is live.
+   confirmation email to that Gmail — click the link in it once and delivery is live.
+   **[CHECK]** Once activated, FormSubmit issues a random alias endpoint that hides the
+   address; switch `QUOTE_ENDPOINT` to it so the Gmail is not sitting in the page source.
+   **[CHECK]** Does `contact@greatlakesexteriorcleaning.com` actually receive mail? It is
+   still displayed on the Contact page and in the footer as the business address.
    The endpoint is a single constant (`QUOTE_ENDPOINT`) in the page's logic block if the
    service ever needs swapping. Success is only shown when the send actually succeeds;
    on failure the visitor gets the phone number and a pre-filled email link.

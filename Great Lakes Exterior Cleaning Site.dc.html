@@ -325,8 +325,10 @@ class Component extends DCLogic {
   // ACTIVATION: the first request sent from the live domain triggers a one-time
   // confirmation email to the address below. Click the link in it once and every
   // later request is forwarded automatically.
-  static QUOTE_ENDPOINT = 'https://formsubmit.co/ajax/contact@greatlakesexteriorcleaning.com';
-  static QUOTE_INBOX = 'contact@greatlakesexteriorcleaning.com';
+  // Delivery goes to the owner's Gmail; the business address shown on the Contact page
+  // and in the footer is separate and unchanged.
+  static QUOTE_ENDPOINT = 'https://formsubmit.co/ajax/loganmucha798@gmail.com';
+  static QUOTE_INBOX = 'loganmucha798@gmail.com';
 
   // status: 'idle' | 'sending' | 'sent' | 'error'
   state = { page: 'home', status: 'idle', error: '', failed: false, name: '', phone: '', email: '', town: 'Buffalo', notes: '', company: '' };
